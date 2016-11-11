@@ -1,17 +1,11 @@
-﻿using MarsRover;
-using MarsRover.Enum;
+﻿using System;
+using System.Reflection;
+using System.Text;
+using MarsRover;
 using MarsRover.InputManager;
 using MarsRover.InputManager.Entity;
 using MarsRover.Interface;
 using Ninject;
-using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace MarsRoverConsoleApp
 {
@@ -22,15 +16,15 @@ namespace MarsRoverConsoleApp
             string inputStr = GenerateInput();
             Input input = InputManager.GetInput(inputStr);
 
-            IKernel _Kernal = new StandardKernel();
-            _Kernal.Load(Assembly.GetExecutingAssembly());
+            IKernel kernal = new StandardKernel();
+            kernal.Load(Assembly.GetExecutingAssembly());
             
-            IPlateau plateau = _Kernal.Get<IPlateau>();
+            IPlateau plateau = kernal.Get<IPlateau>();
             plateau.SetPoint(new Point(input.X, input.Y));
 
             foreach (var inputRover in input.InputRovers)
             {
-                IRover rover = _Kernal.Get<Rover>();
+                IRover rover = kernal.Get<Rover>();
 
                 rover.SetRover(plateau, new Point(inputRover.X,inputRover.Y),inputRover.CurrentDirection);
                 rover.SetCommandParams(inputRover.Commands);

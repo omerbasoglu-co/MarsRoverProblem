@@ -1,5 +1,4 @@
 ﻿using MarsRover.Enum;
-using System;
 
 namespace MarsRover.Interface
 {

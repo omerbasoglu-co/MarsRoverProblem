@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using MarsRover.Enum;
-using MarsRover.Interface;
 using MarsRover.Helper;
+using MarsRover.Interface;
 
 namespace MarsRover
 {
@@ -11,10 +10,10 @@ namespace MarsRover
     {
         private readonly Queue<IRoverCommand> _commandList = new Queue<IRoverCommand>();
 
-        private readonly IRover Rover;
+        private readonly IRover _rover;
         public RoverInvoker(IRover rover)
         {
-            Rover = rover;
+            _rover = rover;
 
             foreach (var ch in rover.CommandParams)
             {
@@ -50,13 +49,13 @@ namespace MarsRover
             switch (EnumHelper.Parse<Movement>(commandString))
             {
                 case Movement.R:
-                    command = new TurnRightCommand(Rover);
+                    command = new TurnRightCommand(_rover);
                     break;
                 case Movement.L:
-                    command = new TurnLeftCommand(Rover);
+                    command = new TurnLeftCommand(_rover);
                     break;
                 case Movement.M:
-                    command = new NextCommand(Rover);
+                    command = new NextCommand(_rover);
                     break;
                 default:
                     command = null;

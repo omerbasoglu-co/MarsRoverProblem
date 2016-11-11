@@ -1,5 +1,4 @@
-﻿using System;
-namespace MarsRover.Interface
+﻿namespace MarsRover.Interface
 {
     public interface IPlateau
     {

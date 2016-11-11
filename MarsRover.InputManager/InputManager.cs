@@ -1,10 +1,8 @@
-﻿using MarsRover.Enum;
-using MarsRover.InputManager.Entity;
-using MarsRover.Helper;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using MarsRover.Enum;
+using MarsRover.Helper;
+using MarsRover.InputManager.Entity;
 
 namespace MarsRover.InputManager
 {
@@ -79,7 +77,7 @@ namespace MarsRover.InputManager
 
                     Direction direction = directionStr.GetValueFromDescription<Direction>();
 
-                    if (direction == null || direction == Direction.None)
+                    if (direction == Direction.None)
                     {
                         throw new FormatException("Oluşturulacak alan parametresi hatalı.Parametre  adı Direction,{N,E,S,W} karakterlerini içermelidir.");
                     }
@@ -105,16 +103,16 @@ namespace MarsRover.InputManager
 
         public static Queue<string> GetLines(string input)
         {
-            string[] lines = input.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+            string[] lines = input.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
 
             Queue<string> lineList = new Queue<string>();
 
             foreach (var item in lines)
             {
-                string _temp = item.ClearMultipleSpace();
-                if (!string.IsNullOrEmpty(_temp))
+                string temp = item.ClearMultipleSpace();
+                if (!string.IsNullOrEmpty(temp))
                 {
-                    lineList.Enqueue(_temp.ToUpper());
+                    lineList.Enqueue(temp.ToUpper());
                 }
             }
 

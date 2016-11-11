@@ -15,15 +15,10 @@ namespace MarsRover
 
         public string CommandParams { get; private set; }
 
-        public Rover()
-        {
-
-        }
-
         public void SetRover(IPlateau plateau, Point point, Direction direction)
         {
-            this.Plateau = plateau;
-            this.Point = point;
+            Plateau = plateau;
+            Point = point;
 
             if (Plateau.IsValid(Point))
             {

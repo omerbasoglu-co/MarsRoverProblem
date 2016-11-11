@@ -1,5 +1,4 @@
-﻿using MarsRover.Interface;
-namespace MarsRover
+﻿namespace MarsRover
 {
     public class Point
     {
